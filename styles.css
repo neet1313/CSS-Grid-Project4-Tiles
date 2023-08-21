@@ -1,0 +1,173 @@
+/* 
+-------------
+-------------
+  VARIABLES
+-------------
+-------------
+*/
+
+:root {
+  --primary-color: #f15025;
+  --mainBlack: #222;
+  --mainWhite: #fff;
+  --offWhite: #f7f7f7;
+  --darkGrey: #afafaf;
+  --mainTransition: all 0.3s linear;
+  --mainSpacing: 0.2rem;
+  --padding0: 0;
+  --padding1: 1rem;
+  --padding2: 2rem;
+  --padding3: 3rem;
+}
+
+/* 
+-------------
+-------------
+  Global styles
+-------------
+-------------
+*/
+
+* {
+  padding: var(--padding0);
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Fira Code", monospace;
+  color: var(--mainBlack);
+  line-height: 1.5rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3 {
+  text-transform: capitalize;
+  letter-spacing: var(--mainSpacing);
+}
+
+h1 {
+  /* Remove in MQ */
+  font-size: 1.5rem;
+}
+
+p {
+  font-weight: 300;
+  font-size: 0.7rem;
+  line-height: 2;
+}
+
+/* Button */
+.btn {
+  display: inline-block;
+  padding: 0.5rem var(--padding1);
+  text-transform: capitalize;
+  border: 3px solid var(--primary-color);
+  color: var(--primary-color);
+  margin: 3rem;
+}
+
+.btn:hover {
+  transition: var(--mainTransition);
+  background: var(--primary-color);
+  color: var(--mainWhite);
+}
+
+/*-------------
+-------------
+  CARDS
+-------------
+-------------
+*/
+
+.title {
+  text-align: center;
+  width: 100vw;
+  min-width: 375px;
+  padding: var(--padding3) var(--padding0);
+}
+
+.cards-center {
+  margin: 0 auto;
+  text-align: center;
+  max-width: 1170px;
+  width: 80vw;
+}
+
+.card-info {
+  padding: var(--padding1);
+}
+
+.card-footer {
+  padding-bottom: var(--padding1);
+}
+
+.card-info p {
+  padding-top: var(--padding1);
+  font-size: medium;
+}
+
+.card {
+  border: 1px solid var(--darkGrey);
+  margin-bottom: 2rem;
+}
+
+.card-footer {
+  background: var(--darkGrey);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 0.5rem 1rem;
+}
+
+.card-footer span {
+  color: var(--primary-color);
+}
+
+/* ----------- GRID COLUMN LAYOUT WITH MEDIA QUERIES -------- */
+
+/* @media screen and (min-width: 768px) {
+  .card {
+    margin-bottom: 0;
+  }
+  .cards-center {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .title h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (min-width: 1170px) {
+  .cards-center {
+    grid-template-columns: repeat(3, 1fr);
+  }
+} */
+
+/* ------ GRID COLUMN LAYOUT WITH minmax AND auto-fill ---- */
+
+/* (1170px - total column gap) / No. of columns */
+/* (1170px - 96px) / 4 = 268.5px  ----> Width of one card */
+
+.cards-center {
+  display: grid;
+  column-gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(268.5px, 1fr));
+}
+
+/* Setting up ROW HEIGHT if content of one of the cards is more. */
+.card{
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
